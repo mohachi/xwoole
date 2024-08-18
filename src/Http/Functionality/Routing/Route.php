@@ -4,6 +4,9 @@ namespace Mohachi\Xwoole\Http\Functionality\Routing;
 
 use Closure;
 use Exception;
+use OpenSwoole\Core\Psr\Response;
+use OpenSwoole\Core\Psr\ServerRequest;
+use OpenSwoole\Core\Psr\Stream;
 
 class Route
 {
@@ -38,6 +41,30 @@ class Route
         if( null === $pattern )
         {
             throw new Exception("Invalid route pattern");
+        }
+        
+        if( is_string($handler) )
+        {
+            $path = realpath($handler);
+            
+            if( false == $path )
+            {
+                throw new Exception("invalid path '$handler'");
+            }
+            
+            if( is_file($path) )
+            {
+                $handler = fn() => new Response(new Stream($path));
+            }
+            else $handler = function(ServerRequest $request) use ($path)
+            {
+                $path = $path . $request->getUri()->getPath();
+                
+                if( is_file($path) )
+                {
+                    return new Response(new Stream($path));
+                }
+            };
         }
         
         $this->handler = $handler;
