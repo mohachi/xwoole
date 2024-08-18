@@ -3,7 +3,7 @@
 namespace Mohachi\Xwoole\Http\Functionality\Routing;
 
 use Closure;
-use OpenSwoole\Core\Psr\Response;
+use Mohachi\Xwoole\Http\Psr\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 trait Routing

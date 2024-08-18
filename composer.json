@@ -3,9 +3,6 @@
     "version": "1.0.0",
     "description": "PHP Openswoole extension",
     "type": "lib",
-    "require": {
-        "openswoole/core": "dev-master"
-    },
     "require-dev": {
         "symfony/var-dumper": "7.2.x-dev",
         "openswoole/ide-helper": "dev-master"
@@ -22,5 +19,8 @@
             "email": "hachiassali15@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require": {
+        "psr/http-message": "^2.0@dev"
+    }
 }

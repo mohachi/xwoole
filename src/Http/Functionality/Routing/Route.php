@@ -4,9 +4,9 @@ namespace Mohachi\Xwoole\Http\Functionality\Routing;
 
 use Closure;
 use Exception;
-use OpenSwoole\Core\Psr\Response;
-use OpenSwoole\Core\Psr\ServerRequest;
-use OpenSwoole\Core\Psr\Stream;
+use Mohachi\Xwoole\Http\Psr\Response;
+use Mohachi\Xwoole\Http\Psr\ServerRequest;
+use Mohachi\Xwoole\Http\Psr\Stream;
 
 class Route
 {

@@ -2,25 +2,10 @@
 
 namespace Mohachi\Xwoole\Http;
 
-use Mohachi\Xwoole\Http\Functionality\Routing\Routing;
-use OpenSwoole\Core\Psr\Request;
-use OpenSwoole\Http\Server as HttpServer;
+use Mohachi\Xwoole\Http\Functionality\Serving;
+use OpenSwoole\Http\Server as OpenSwooleHttpServer;
 
-class Server extends HttpServer
+class Server extends OpenSwooleHttpServer
 {
-    use Routing;
-    
-    public function handle(callable $callback): bool
-    {
-        return false;
-    }
-    
-    #[\Override]
-    public function start(): bool
-    {
-        parent::handle($this->getHandler());
-        
-        return parent::start();
-    }
-    
+    use Serving;
 }
