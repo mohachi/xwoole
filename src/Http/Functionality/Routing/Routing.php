@@ -86,7 +86,6 @@ trait Routing
             
             if( empty($result) )
             {
-                dump("no response => repond with 500");
                 return new Response("", 500);
             }
             

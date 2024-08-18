@@ -4,17 +4,20 @@ namespace Mohachi\Xwoole\Http\Functionality\Routing;
 
 use Closure;
 use Exception;
-use OpenSwoole\Core\Psr\Request;
-use OpenSwoole\Core\Psr\Response;
-use OpenSwoole\Core\Psr\Stream;
 
 class Route
 {
     
     private $arguments = [];
     private $subtitutions = [
-        "~(/\\\\\*(\\\\\*)+)+~" => "(?:/.+?)?",
+        
+        // Super Global pattern, example: '/**'
+        "~(/\\\\\*(\\\\\*)+)+~" => "(?:.+?)?",
+        
+        // Global pattern, example: '*'
         "~\\\\\*~" => "[^/]+?",
+        
+        // Parameter pattern, example: '{any}'
         "~\\\\{([\da-z][\w_]*?)\\\\}~i" => "(?<$1>[^/]+?)"
     ];
     
